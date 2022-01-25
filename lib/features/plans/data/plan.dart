@@ -2,9 +2,11 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
+/// Plan data class
 class Plan {
   /// Creates a new instance from JSON
-  Plan.fromJson(Map<String, dynamic> json) : name = json['name'].toString();
+  Plan.fromJson(Map<String, dynamic> json)
+      : name = json['englishName'].toString();
 
   String name;
 }
