@@ -6,7 +6,33 @@
 class Plan {
   /// Creates a new instance from JSON
   Plan.fromJson(Map<String, dynamic> json)
-      : name = json['englishName'].toString();
+      // ignore: avoid_dynamic_calls
+      : id = json['_id']['oid'].toString(),
+        englishName = json['englishName'].toString(),
+        italianName = json['italianName'].toString(),
+        frenchName = json['frenchName'].toString(),
+        serbianName = json['serbianName'].toString(),
+        dutchName = json['dutchName'].toString(),
+        orderNumber = int.parse(json['orderNumber'].toString());
 
-  String name;
+  /// Plan id
+  String id;
+
+  /// Plan name on english
+  String englishName;
+
+  /// Plan name on italian
+  String italianName;
+
+  /// Plan name on french
+  String frenchName;
+
+  /// Plan name on serbian
+  String serbianName;
+
+  /// Plan name on dutch
+  String dutchName;
+
+  /// Plan order number
+  int orderNumber;
 }

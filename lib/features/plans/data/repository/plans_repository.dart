@@ -9,8 +9,8 @@ import 'package:apollo_flutter/features/plans/data/plan.dart';
 class PlansRepository {
   final _plansProvider = PlansProvider();
 
-  /// Get plans
-  Future<List<Plan>> getPlans() async {
+  /// Get plans data
+  Future<List<Plan>> getData() async {
     return _plansProvider.readData();
   }
 }
