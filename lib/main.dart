@@ -1,9 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:apollo_flutter/simple_bloc_observer.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  BlocOverrides.runZoned(
+    () => runApp(const MyApp()),
+    blocObserver: SimpleBlocObserver(),
+  );
 }
 
 class MyApp extends StatelessWidget {

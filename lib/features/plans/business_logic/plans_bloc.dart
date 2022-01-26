@@ -4,16 +4,43 @@
 
 import 'dart:async';
 
+import 'package:apollo_flutter/features/plans/data/plan.dart';
+import 'package:apollo_flutter/features/plans/data/repository/plans_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'plans_event.dart';
 part 'plans_state.dart';
 
+/// Plans Bloc
 class PlansBloc extends Bloc<PlansEvent, PlansState> {
-  PlansBloc() : super(PlansInitial()) {
-    on<PlansEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  /// Creates new instance of bloc
+  PlansBloc({required this.repository}) : super(const PlansState()) {
+    on<PlansFetched>(_onPlansFetched);
+  }
+
+  /// Plans repository
+  final PlansRepository repository;
+
+  Future<void> _onPlansFetched(
+    PlansFetched event,
+    Emitter<PlansState> emit,
+  ) async {
+    try {
+      if (state.status == PlansStatus.initial) {
+        final plans = await repository.getData();
+
+        if (state.status == PlansStatus.initial) {
+          return emit(
+            state.copyWith(
+              status: PlansStatus.success,
+              plans: plans,
+            ),
+          );
+        }
+      }
+    } catch (_) {
+      emit(state.copyWith(status: PlansStatus.failure));
+    }
   }
 }

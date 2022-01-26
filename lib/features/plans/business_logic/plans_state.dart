@@ -4,7 +4,47 @@
 
 part of 'plans_bloc.dart';
 
-@immutable
-abstract class PlansState {}
+/// Status of the state
+enum PlansStatus {
+  /// Tells the presentation layer it needs to render a loading indicator while
+  /// the initial batch of plans are loaded
+  initial,
 
-class PlansInitial extends PlansState {}
+  /// Tells the presentation layer it has content to render
+  success,
+
+  /// Tells the presentation layer that an error has occurred while fetching
+  failure,
+}
+
+/// Plans state class
+class PlansState {
+  /// Creates a new instance of state
+  const PlansState({
+    this.status = PlansStatus.initial,
+    this.plans = const <Plan>[],
+  });
+
+  /// Copy an instance of state and update zero or more
+  /// properties conveniently
+  PlansState copyWith({
+    PlansStatus? status,
+    List<Plan>? plans,
+  }) {
+    return PlansState(
+      status: status ?? this.status,
+      plans: plans ?? this.plans,
+    );
+  }
+
+  /// State status
+  final PlansStatus status;
+
+  /// State plans
+  final List<Plan> plans;
+
+  @override
+  String toString() {
+    return 'PlansState { status: $status, plans: ${plans.length} }';
+  }
+}

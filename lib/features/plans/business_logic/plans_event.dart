@@ -4,5 +4,9 @@
 
 part of 'plans_bloc.dart';
 
+/// Base event
 @immutable
 abstract class PlansEvent {}
+
+/// Plans fetch event
+class PlansFetched extends PlansEvent {}
