@@ -30,14 +30,12 @@ class PlansBloc extends Bloc<PlansEvent, PlansState> {
       if (state.status == PlansStatus.initial) {
         final plans = await repository.getData();
 
-        if (state.status == PlansStatus.initial) {
-          return emit(
-            state.copyWith(
-              status: PlansStatus.success,
-              plans: plans,
-            ),
-          );
-        }
+        return emit(
+          state.copyWith(
+            status: PlansStatus.success,
+            plans: plans,
+          ),
+        );
       }
     } catch (_) {
       emit(state.copyWith(status: PlansStatus.failure));
