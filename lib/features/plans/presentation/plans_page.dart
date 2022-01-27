@@ -13,6 +13,9 @@ class PlansPage extends StatelessWidget {
   /// Creates new instance
   const PlansPage({Key? key}) : super(key: key);
 
+  /// Page ID
+  static const String id = 'plans_page';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

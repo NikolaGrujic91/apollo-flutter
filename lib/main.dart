@@ -1,3 +1,4 @@
+import 'package:apollo_flutter/features/days/presentation/days_page.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
 import 'package:apollo_flutter/simple_bloc_observer.dart';
 import 'package:bloc/bloc.dart';
@@ -11,7 +12,9 @@ void main() {
   );
 }
 
+/// This widget is the root of the application.
 class ApolloApp extends StatelessWidget {
+  /// Creates a new instance
   const ApolloApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
@@ -23,7 +26,11 @@ class ApolloApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PlansPage(),
+      initialRoute: PlansPage.id,
+      routes: {
+        PlansPage.id: (context) => const PlansPage(),
+        DaysPage.id: (context) => const DaysPage(),
+      },
     );
   }
 }

@@ -14,6 +14,9 @@ class DaysPage extends StatelessWidget {
   /// Creates new instance
   const DaysPage({Key? key}) : super(key: key);
 
+  /// Page ID
+  static const String id = 'days_page';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
