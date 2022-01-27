@@ -2,6 +2,7 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
+import 'package:apollo_flutter/features/days/presentation/days_page.dart';
 import 'package:apollo_flutter/features/plans/data/plan.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,13 @@ class PlanListItem extends StatelessWidget {
         leading: Text('${plan.orderNumber}', style: textTheme.caption),
         title: Text(plan.englishName),
         dense: true,
+        onTap: () {
+          Navigator.pushReplacementNamed(
+            context,
+            DaysPage.id,
+            arguments: plan.id,
+          );
+        },
       ),
     );
   }
