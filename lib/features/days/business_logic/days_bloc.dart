@@ -27,7 +27,7 @@ class DaysBloc extends Bloc<DaysEvent, DaysState> {
     Emitter<DaysState> emit,
   ) async {
     try {
-      if (state.status == DaysStatus.initial) {
+      if (DaysStatus.initial == state.status) {
         final days = await repository.getDataForPlan(event.planId);
 
         return emit(

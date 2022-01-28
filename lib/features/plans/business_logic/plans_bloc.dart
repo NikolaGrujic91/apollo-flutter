@@ -27,7 +27,7 @@ class PlansBloc extends Bloc<PlansEvent, PlansState> {
     Emitter<PlansState> emit,
   ) async {
     try {
-      if (state.status == PlansStatus.initial) {
+      if (PlansStatus.initial == state.status) {
         final plans = await repository.getData();
 
         return emit(

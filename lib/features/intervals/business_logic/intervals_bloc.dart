@@ -27,7 +27,7 @@ class IntervalsBloc extends Bloc<IntervalsEvent, IntervalsState> {
     Emitter<IntervalsState> emit,
   ) async {
     try {
-      if (state.status == IntervalsStatus.initial) {
+      if (IntervalsStatus.initial == state.status) {
         final intervals = await repository.getData(event.dayId, event.planId);
 
         return emit(
