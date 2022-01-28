@@ -2,12 +2,12 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
-part of 'days_bloc.dart';
+part of 'intervals_bloc.dart';
 
 /// Status of the state
-enum DaysStatus {
+enum IntervalsStatus {
   /// Tells the presentation layer it needs to render a loading indicator while
-  /// the initial batch of days are loaded
+  /// the initial batch of intervals are loaded
   initial,
 
   /// Tells the presentation layer it has content to render
@@ -17,34 +17,34 @@ enum DaysStatus {
   failure,
 }
 
-/// Days state class
-class DaysState {
+/// Intervals state class
+class IntervalsState {
   /// Creates a new instance of state
-  const DaysState({
-    this.status = DaysStatus.initial,
-    this.days = const <Day>[],
+  const IntervalsState({
+    this.status = IntervalsStatus.initial,
+    this.intervals = const <Interval>[],
   });
 
   /// Copy an instance of state and update zero or more
   /// properties conveniently
-  DaysState copyWith({
-    DaysStatus? status,
-    List<Day>? days,
+  IntervalsState copyWith({
+    IntervalsStatus? status,
+    List<Interval>? intervals,
   }) {
-    return DaysState(
+    return IntervalsState(
       status: status ?? this.status,
-      days: days ?? this.days,
+      intervals: intervals ?? this.intervals,
     );
   }
 
   /// State status
-  final DaysStatus status;
+  final IntervalsStatus status;
 
-  /// State days
-  final List<Day> days;
+  /// State intervals
+  final List<Interval> intervals;
 
   @override
   String toString() {
-    return 'DaysState { status: $status, days: ${days.length} }';
+    return 'IntervalsStatus { status: $status, intervals: ${intervals.length} }';
   }
 }

@@ -2,16 +2,22 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
-part of 'days_bloc.dart';
+part of 'intervals_bloc.dart';
 
 /// Base events
 @immutable
-abstract class DaysEvent {}
+abstract class IntervalsEvent {}
 
-/// Days fetch event
-class DaysFetched extends DaysEvent {
+/// Intervals fetch event
+class IntervalsFetched extends IntervalsEvent {
   /// Creates new instance
-  DaysFetched({required this.planId});
+  IntervalsFetched({
+    required this.dayId,
+    required this.planId,
+  });
+
+  /// Day id
+  final String dayId;
 
   /// Plan id
   final String planId;
