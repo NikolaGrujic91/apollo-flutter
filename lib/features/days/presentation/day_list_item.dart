@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:apollo_flutter/features/days/data/day.dart';
+import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
 import 'package:flutter/material.dart';
 
 /// Widget representing days list item
@@ -25,6 +26,13 @@ class DayListItem extends StatelessWidget {
         leading: Text('${day.orderNumber}', style: textTheme.caption),
         title: Text(day.englishName),
         dense: true,
+        onTap: () {
+          Navigator.pushReplacementNamed(
+            context,
+            IntervalsPage.id,
+            arguments: {'dayId': day.id, 'planId': day.planId},
+          );
+        },
       ),
     );
   }

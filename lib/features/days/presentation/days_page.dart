@@ -10,7 +10,7 @@ import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// Widget representing plans page
+/// Widget representing days page
 class DaysPage extends StatelessWidget {
   /// Creates new instance
   const DaysPage({Key? key}) : super(key: key);

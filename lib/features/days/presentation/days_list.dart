@@ -7,7 +7,7 @@ import 'package:apollo_flutter/features/days/presentation/day_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// Widget representing plans list
+/// Widget representing days list
 class DaysList extends StatefulWidget {
   /// Creates new instance
   const DaysList({Key? key}) : super(key: key);

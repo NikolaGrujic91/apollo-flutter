@@ -1,4 +1,5 @@
 import 'package:apollo_flutter/features/days/presentation/days_page.dart';
+import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
 import 'package:apollo_flutter/simple_bloc_observer.dart';
 import 'package:bloc/bloc.dart';
@@ -30,6 +31,7 @@ class ApolloApp extends StatelessWidget {
       routes: {
         PlansPage.id: (context) => const PlansPage(),
         DaysPage.id: (context) => const DaysPage(),
+        IntervalsPage.id: (context) => const IntervalsPage(),
       },
     );
   }
