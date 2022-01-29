@@ -2,17 +2,19 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
+import 'package:apollo_flutter/util/constants_json.dart';
+
 /// Interval data class
 class Interval {
   /// Creates a new instance from JSON
   Interval.fromJson(Map<String, dynamic> json)
       // ignore: avoid_dynamic_calls
-      : id = json['_id']['oid'].toString(),
-        dayId = json['dayID'].toString(),
-        planId = json['planID'].toString(),
-        type = json['type'].toString(),
-        seconds = int.parse(json['seconds'].toString()),
-        orderNumber = int.parse(json['orderNumber'].toString());
+      : id = json[kId][kOid].toString(),
+        dayId = json[kDayId].toString(),
+        planId = json[kPlanId].toString(),
+        type = json[kType].toString(),
+        seconds = int.parse(json[kSeconds].toString()),
+        orderNumber = int.parse(json[kOrderNumber].toString());
 
   /// Interval id
   String id;

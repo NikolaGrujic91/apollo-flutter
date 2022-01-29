@@ -2,19 +2,21 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
+import 'package:apollo_flutter/util/constants_json.dart';
+
 /// Day data class
 class Day {
   /// Creates a new instance from JSON
   Day.fromJson(Map<String, dynamic> json)
       // ignore: avoid_dynamic_calls
-      : id = json['_id']['oid'].toString(),
-        planId = json['planID'].toString(),
-        englishName = json['englishName'].toString(),
-        italianName = json['italianName'].toString(),
-        frenchName = json['frenchName'].toString(),
-        serbianName = json['serbianName'].toString(),
-        dutchName = json['dutchName'].toString(),
-        orderNumber = int.parse(json['orderNumber'].toString());
+      : id = json[kId][kOid].toString(),
+        planId = json[kPlanId].toString(),
+        englishName = json[kEnglishName].toString(),
+        italianName = json[kItalianName].toString(),
+        frenchName = json[kFrenchName].toString(),
+        serbianName = json[kSerbianName].toString(),
+        dutchName = json[kDutchName].toString(),
+        orderNumber = int.parse(json[kOrderNumber].toString());
 
   /// Day id
   String id;
