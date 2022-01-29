@@ -4,6 +4,7 @@
 
 import 'package:apollo_flutter/features/intervals/business_logic/intervals_bloc.dart';
 import 'package:apollo_flutter/features/intervals/presentation/interval_list_item.dart';
+import 'package:apollo_flutter/features/intervals/presentation/interval_list_item_total.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,9 +32,11 @@ class _IntervalsListState extends State<IntervalsList> {
               return const Center(child: Text('no intervals'));
             }
             return ListView.builder(
-              itemCount: state.intervals.length,
+              itemCount: state.intervals.length + 1,
               itemBuilder: (context, index) {
-                return IntervalListItem(interval: state.intervals[index]);
+                return index == state.intervals.length
+                    ? IntervalTotalListItem(intervals: state.intervals)
+                    : IntervalListItem(interval: state.intervals[index]);
               },
               controller: _scrollController,
             );
