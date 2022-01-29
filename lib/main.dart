@@ -14,8 +14,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  final _plansRepository = PlansRepository();
+  final _daysRepository = DaysRepository();
+  final _intervalsRepository = IntervalsRepository();
+
   BlocOverrides.runZoned(
-    () => runApp(ApolloApp()),
+    () => runApp(
+      ApolloApp(
+        plansRepository: _plansRepository,
+        daysRepository: _daysRepository,
+        intervalsRepository: _intervalsRepository,
+      ),
+    ),
     blocObserver: SimpleBlocObserver(),
   );
 }
@@ -23,31 +33,41 @@ void main() {
 /// This widget is the root of the application.
 class ApolloApp extends StatelessWidget {
   /// Creates a new instance
-  ApolloApp({Key? key}) : super(key: key);
+  const ApolloApp({
+    Key? key,
+    required this.plansRepository,
+    required this.daysRepository,
+    required this.intervalsRepository,
+  }) : super(key: key);
 
-  final _plansRepository = PlansRepository();
-  final _daysRepository = DaysRepository();
-  final _intervalsRepository = IntervalsRepository();
+  /// Plans repository
+  final PlansRepository plansRepository;
+
+  /// Days repository
+  final DaysRepository daysRepository;
+
+  /// Intervals repository
+  final IntervalsRepository intervalsRepository;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Apollo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: PlansPage.id,
       routes: {
         PlansPage.id: (context) => PlansPage(
-              repository: _plansRepository,
+              repository: plansRepository,
             ),
         DaysPage.id: (context) => DaysPage(
-              repository: _daysRepository,
+              repository: daysRepository,
             ),
         IntervalsPage.id: (context) => IntervalsPage(
-              repository: _intervalsRepository,
+              repository: intervalsRepository,
             ),
       },
     );
