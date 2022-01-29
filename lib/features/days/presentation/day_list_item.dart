@@ -4,6 +4,7 @@
 
 import 'package:apollo_flutter/features/days/data/day.dart';
 import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
+import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,8 @@ class DayListItem extends StatelessWidget {
         leading: Text('${day.orderNumber}', style: textTheme.caption),
         title: Text(day.englishName),
         dense: true,
+        tileColor: kBackgroundColor,
+        textColor: kTextColor,
         onTap: () {
           Navigator.pushReplacementNamed(
             context,

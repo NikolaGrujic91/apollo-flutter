@@ -6,6 +6,7 @@ import 'package:apollo_flutter/features/days/presentation/days_page.dart';
 import 'package:apollo_flutter/features/intervals/business_logic/intervals_bloc.dart';
 import 'package:apollo_flutter/features/intervals/data/repository/intervals_repository.dart';
 import 'package:apollo_flutter/features/intervals/presentation/intervals_list.dart';
+import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +31,8 @@ class IntervalsPage extends StatelessWidget {
       appBar: AppBar(
         leading: _backButton(context),
         title: const Text('Intervals'),
+        backgroundColor: kBackgroundColor,
+        foregroundColor: kTextColor,
       ),
       body: BlocProvider(
         create: (_) => IntervalsBloc(repository: repository)

@@ -4,6 +4,7 @@
 
 ///flutter/material.dart also has class Interval, so the prefix apollo is used
 import 'package:apollo_flutter/features/intervals/data/interval.dart' as apollo;
+import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/formatters.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,8 @@ class IntervalTotalListItem extends StatelessWidget {
         leading: Text('Total', style: textTheme.caption),
         title: Text(intervalFormatted(_calculatedTotal())),
         dense: true,
+        tileColor: kBackgroundColor,
+        textColor: kTextColor,
       ),
     );
   }

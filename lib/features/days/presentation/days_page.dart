@@ -7,6 +7,7 @@ import 'package:apollo_flutter/features/days/data/repository/days_repository'
     '.dart';
 import 'package:apollo_flutter/features/days/presentation/days_list.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
+import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,6 +32,8 @@ class DaysPage extends StatelessWidget {
       appBar: AppBar(
         leading: _backButton(context),
         title: const Text('Days'),
+        backgroundColor: kBackgroundColor,
+        foregroundColor: kTextColor,
       ),
       body: BlocProvider(
         create: (_) => DaysBloc(repository: repository)

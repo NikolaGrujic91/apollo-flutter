@@ -55,9 +55,6 @@ class ApolloApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Apollo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       initialRoute: PlansPage.id,
       routes: {
         PlansPage.id: (context) => PlansPage(

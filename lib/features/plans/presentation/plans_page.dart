@@ -5,6 +5,7 @@
 import 'package:apollo_flutter/features/plans/business_logic/plans_bloc.dart';
 import 'package:apollo_flutter/features/plans/data/repository/plans_repository.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_list.dart';
+import 'package:apollo_flutter/util/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +26,11 @@ class PlansPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Plans')),
+      appBar: AppBar(
+        title: const Text('Plans'),
+        backgroundColor: kBackgroundColor,
+        foregroundColor: kTextColor,
+      ),
       body: BlocProvider(
         create: (_) => PlansBloc(repository: repository)..add(PlansFetched()),
         child: const PlansList(),

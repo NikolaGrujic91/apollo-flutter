@@ -4,6 +4,7 @@
 
 import 'package:apollo_flutter/features/plans/business_logic/plans_bloc.dart';
 import 'package:apollo_flutter/features/plans/presentation/plan_list_item.dart';
+import 'package:apollo_flutter/util/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,26 +22,29 @@ class _PlansListState extends State<PlansList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PlansBloc, PlansState>(
-      builder: (context, state) {
-        switch (state.status) {
-          case PlansStatus.failure:
-            return const Center(child: Text('failed to fetch plans'));
-          case PlansStatus.success:
-            if (state.plans.isEmpty) {
-              return const Center(child: Text('no plans'));
-            }
-            return ListView.builder(
-              itemCount: state.plans.length,
-              itemBuilder: (context, index) {
-                return PlanListItem(plan: state.plans[index]);
-              },
-              controller: _scrollController,
-            );
-          case PlansStatus.initial:
-            return const Center(child: CircularProgressIndicator());
-        }
-      },
+    return Container(
+      color: kBackgroundColor,
+      child: BlocBuilder<PlansBloc, PlansState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case PlansStatus.failure:
+              return const Center(child: Text('failed to fetch plans'));
+            case PlansStatus.success:
+              if (state.plans.isEmpty) {
+                return const Center(child: Text('no plans'));
+              }
+              return ListView.builder(
+                itemCount: state.plans.length,
+                itemBuilder: (context, index) {
+                  return PlanListItem(plan: state.plans[index]);
+                },
+                controller: _scrollController,
+              );
+            case PlansStatus.initial:
+              return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 
