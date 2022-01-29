@@ -45,6 +45,6 @@ class IntervalsState {
 
   @override
   String toString() {
-    return 'IntervalsStatus { status: $status, intervals: ${intervals.length} }';
+    return 'IntervalsStatus { status: $status, intervals: ${intervals.length}}';
   }
 }

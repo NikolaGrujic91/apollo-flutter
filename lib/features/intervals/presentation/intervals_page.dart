@@ -51,14 +51,14 @@ class IntervalsPage extends StatelessWidget {
   }
 
   String _getDayId(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
 
-    return arguments['dayId'].toString();
+    return arguments!['dayId'].toString();
   }
 
   String _getPlanId(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
+    final arguments = ModalRoute.of(context)!.settings.arguments as Map?;
 
-    return arguments['planId'].toString();
+    return arguments!['planId'].toString();
   }
 }
