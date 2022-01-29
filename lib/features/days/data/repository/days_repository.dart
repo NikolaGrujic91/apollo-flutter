@@ -5,11 +5,11 @@
 import 'package:apollo_flutter/features/days/data/data_provider/days_provider.dart';
 import 'package:apollo_flutter/features/days/data/day.dart';
 
-/// Class responsible for acting as a wrapper around days provider
+/// Class responsible for acting as a wrapper around [DaysProvider]
 class DaysRepository {
   final _daysProvider = DaysProvider();
 
-  /// Get days for plan
+  /// Get days for [planId]
   Future<List<Day>> getData(String planId) async {
     var filtered = <Day>[];
 

@@ -13,10 +13,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// Widget representing days page
 class DaysPage extends StatelessWidget {
   /// Creates new instance
-  const DaysPage({Key? key}) : super(key: key);
+  const DaysPage({
+    Key? key,
+    required this.repository,
+  }) : super(key: key);
 
   /// Page ID
   static const String id = 'days_page';
+
+  /// Days repository
+  final DaysRepository repository;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,7 @@ class DaysPage extends StatelessWidget {
         title: const Text('Days'),
       ),
       body: BlocProvider(
-        create: (_) => DaysBloc(repository: DaysRepository())
+        create: (_) => DaysBloc(repository: repository)
           ..add(DaysFetched(planId: _getPlanId(context))),
         child: const DaysList(),
       ),

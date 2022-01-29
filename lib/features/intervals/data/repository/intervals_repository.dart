@@ -5,11 +5,11 @@
 import 'package:apollo_flutter/features/intervals/data/data_provider/intervals_provider.dart';
 import 'package:apollo_flutter/features/intervals/data/interval.dart';
 
-/// Class responsible for acting as a wrapper around intervals provider
+/// Class responsible for acting as a wrapper around [IntervalsProvider]
 class IntervalsRepository {
   final _intervalsProvider = IntervalsProvider();
 
-  /// Get intervals for day and plan
+  /// Get intervals for [dayId] and [planId]
   Future<List<Interval>> getData(String dayId, String planId) async {
     var filtered = <Interval>[];
 

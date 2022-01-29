@@ -5,7 +5,7 @@
 import 'package:apollo_flutter/features/plans/data/data_provider/plans_provider.dart';
 import 'package:apollo_flutter/features/plans/data/plan.dart';
 
-/// Class responsible for acting as a wrapper around plan provider
+/// Class responsible for acting as a wrapper around [PlansProvider]
 class PlansRepository {
   final _plansProvider = PlansProvider();
 

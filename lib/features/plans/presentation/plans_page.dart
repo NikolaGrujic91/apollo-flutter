@@ -11,18 +11,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// Widget representing plans page
 class PlansPage extends StatelessWidget {
   /// Creates new instance
-  const PlansPage({Key? key}) : super(key: key);
+  const PlansPage({
+    Key? key,
+    required this.repository,
+  }) : super(key: key);
 
   /// Page ID
   static const String id = 'plans_page';
+
+  /// Plans repository
+  final PlansRepository repository;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Plans')),
       body: BlocProvider(
-        create: (_) =>
-            PlansBloc(repository: PlansRepository())..add(PlansFetched()),
+        create: (_) => PlansBloc(repository: repository)..add(PlansFetched()),
         child: const PlansList(),
       ),
     );

@@ -1,5 +1,12 @@
+// Copyright 2022 Nikola Grujic. All rights reserved.
+// Use of this source code is governed by a GNU-style license that can be
+// found in the LICENSE file.
+
+import 'package:apollo_flutter/features/days/data/repository/days_repository.dart';
 import 'package:apollo_flutter/features/days/presentation/days_page.dart';
+import 'package:apollo_flutter/features/intervals/data/repository/intervals_repository.dart';
 import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
+import 'package:apollo_flutter/features/plans/data/repository/plans_repository.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
 import 'package:apollo_flutter/simple_bloc_observer.dart';
 import 'package:bloc/bloc.dart';
@@ -8,7 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   BlocOverrides.runZoned(
-    () => runApp(const ApolloApp()),
+    () => runApp(ApolloApp()),
     blocObserver: SimpleBlocObserver(),
   );
 }
@@ -16,7 +23,11 @@ void main() {
 /// This widget is the root of the application.
 class ApolloApp extends StatelessWidget {
   /// Creates a new instance
-  const ApolloApp({Key? key}) : super(key: key);
+  ApolloApp({Key? key}) : super(key: key);
+
+  final _plansRepository = PlansRepository();
+  final _daysRepository = DaysRepository();
+  final _intervalsRepository = IntervalsRepository();
 
   // This widget is the root of your application.
   @override
@@ -29,9 +40,15 @@ class ApolloApp extends StatelessWidget {
       ),
       initialRoute: PlansPage.id,
       routes: {
-        PlansPage.id: (context) => const PlansPage(),
-        DaysPage.id: (context) => const DaysPage(),
-        IntervalsPage.id: (context) => const IntervalsPage(),
+        PlansPage.id: (context) => PlansPage(
+              repository: _plansRepository,
+            ),
+        DaysPage.id: (context) => DaysPage(
+              repository: _daysRepository,
+            ),
+        IntervalsPage.id: (context) => IntervalsPage(
+              repository: _intervalsRepository,
+            ),
       },
     );
   }

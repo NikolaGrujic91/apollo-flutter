@@ -12,10 +12,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// Widget representing intervals page
 class IntervalsPage extends StatelessWidget {
   /// Creates new instance
-  const IntervalsPage({Key? key}) : super(key: key);
+  const IntervalsPage({
+    Key? key,
+    required this.repository,
+  }) : super(key: key);
 
   /// Page ID
   static const String id = 'intervals_page';
+
+  /// Intervals repository
+  final IntervalsRepository repository;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,7 @@ class IntervalsPage extends StatelessWidget {
         title: const Text('Intervals'),
       ),
       body: BlocProvider(
-        create: (_) => IntervalsBloc(repository: IntervalsRepository())
+        create: (_) => IntervalsBloc(repository: repository)
           ..add(
             IntervalsFetched(
               dayId: _getDayId(context),
