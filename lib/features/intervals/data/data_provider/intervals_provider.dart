@@ -18,6 +18,7 @@ class IntervalsProvider {
     if (_intervals.isNotEmpty) {
       return _intervals;
     }
+
     final dynamic jsonDecoded = json.decode(intervalsData);
 
     return _intervals = (jsonDecoded as List)

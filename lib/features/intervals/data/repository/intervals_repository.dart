@@ -24,6 +24,11 @@ class IntervalsRepository {
           },
         );
 
+    filtered.sort(
+      (intervalA, intervalB) =>
+          intervalA.orderNumber.compareTo(intervalB.orderNumber),
+    );
+
     return filtered;
   }
 }

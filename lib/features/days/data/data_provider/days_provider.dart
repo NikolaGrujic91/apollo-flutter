@@ -18,6 +18,7 @@ class DaysProvider {
     if (_days.isNotEmpty) {
       return _days;
     }
+
     final dynamic jsonDecoded = json.decode(daysData);
 
     return _days = (jsonDecoded as List)

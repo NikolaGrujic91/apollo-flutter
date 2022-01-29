@@ -11,6 +11,16 @@ class PlansRepository {
 
   /// Get plans data
   Future<List<Plan>> getData() async {
-    return _plansProvider.readData();
+    var filtered = <Plan>[];
+
+    await _plansProvider.readData().then(
+          (List<Plan> plans) => {filtered = plans},
+        );
+
+    filtered.sort(
+      (planA, planB) => planA.orderNumber.compareTo(planB.orderNumber),
+    );
+
+    return filtered;
   }
 }

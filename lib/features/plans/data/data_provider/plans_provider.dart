@@ -10,14 +10,19 @@ import 'package:apollo_flutter/features/plans/data/plans_data.dart';
 
 /// Class responsible for providing plans data.
 class PlansProvider {
+  List<Plan> _plans = [];
+
   /// Read plans data from json
   Future<List<Plan>> readData() async {
+    /// if plans are already loaded from json
+    if (_plans.isNotEmpty) {
+      return _plans;
+    }
+
     final dynamic jsonDecoded = json.decode(plansData);
 
-    final plans = (jsonDecoded as List)
+    return _plans = (jsonDecoded as List)
         .map((dynamic i) => Plan.fromJson(i as Map<String, dynamic>))
         .toList();
-
-    return plans;
   }
 }

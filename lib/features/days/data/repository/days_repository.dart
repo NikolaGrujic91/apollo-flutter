@@ -10,7 +10,7 @@ class DaysRepository {
   final _daysProvider = DaysProvider();
 
   /// Get days for plan
-  Future<List<Day>> getDataForPlan(String planId) async {
+  Future<List<Day>> getData(String planId) async {
     var filtered = <Day>[];
 
     await _daysProvider.readData().then(
@@ -18,6 +18,10 @@ class DaysRepository {
             filtered = days.where((day) => day.planId == planId).toList(),
           },
         );
+
+    filtered.sort(
+      (dayA, dayB) => dayA.orderNumber.compareTo(dayB.orderNumber),
+    );
 
     return filtered;
   }

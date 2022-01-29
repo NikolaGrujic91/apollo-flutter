@@ -28,7 +28,7 @@ class DaysBloc extends Bloc<DaysEvent, DaysState> {
   ) async {
     try {
       if (DaysStatus.initial == state.status) {
-        final days = await repository.getDataForPlan(event.planId);
+        final days = await repository.getData(event.planId);
 
         return emit(
           state.copyWith(
