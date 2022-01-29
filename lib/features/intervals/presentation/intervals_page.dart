@@ -2,6 +2,7 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
+import 'package:apollo_flutter/features/countdown_timer/presentation/countdown_timer_page.dart';
 import 'package:apollo_flutter/features/days/presentation/days_page.dart';
 import 'package:apollo_flutter/features/intervals/business_logic/intervals_bloc.dart';
 import 'package:apollo_flutter/features/intervals/data/repository/intervals_repository.dart';
@@ -28,6 +29,7 @@ class IntervalsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: _floatingActionButton(context),
       appBar: AppBar(
         leading: _backButton(context),
         title: const Text('Intervals'),
@@ -43,6 +45,36 @@ class IntervalsPage extends StatelessWidget {
             ),
           ),
         child: const IntervalsList(),
+      ),
+    );
+  }
+
+  Widget _floatingActionButton(BuildContext context) {
+    return SizedBox(
+      height: 150,
+      width: 150,
+      child: FittedBox(
+        child: FloatingActionButton(
+          backgroundColor: kBackgroundColor,
+          foregroundColor: kTextColor,
+          elevation: 6,
+          shape: const CircleBorder(
+            side: BorderSide(
+              color: kTextColor,
+            ),
+          ),
+          child: const Text('Start'),
+          onPressed: () {
+            Navigator.pushReplacementNamed(
+              context,
+              CountdownTimerPage.id,
+              arguments: {
+                kDayId: _getDayId(context),
+                kPlanId: _getPlanId(context),
+              },
+            );
+          },
+        ),
       ),
     );
   }

@@ -25,28 +25,31 @@ class _IntervalsListState extends State<IntervalsList> {
   Widget build(BuildContext context) {
     return Container(
       color: kBackgroundColor,
-      child: BlocBuilder<IntervalsBloc, IntervalsState>(
-        builder: (context, state) {
-          switch (state.status) {
-            case IntervalsStatus.failure:
-              return const Center(child: Text('failed to fetch intervals'));
-            case IntervalsStatus.success:
-              if (state.intervals.isEmpty) {
-                return const Center(child: Text('no intervals'));
-              }
-              return ListView.builder(
-                itemCount: state.intervals.length + 1,
-                itemBuilder: (context, index) {
-                  return index == state.intervals.length
-                      ? IntervalTotalListItem(intervals: state.intervals)
-                      : IntervalListItem(interval: state.intervals[index]);
-                },
-                controller: _scrollController,
-              );
-            case IntervalsStatus.initial:
-              return const Center(child: CircularProgressIndicator());
-          }
-        },
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 90),
+        child: BlocBuilder<IntervalsBloc, IntervalsState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case IntervalsStatus.failure:
+                return const Center(child: Text('failed to fetch intervals'));
+              case IntervalsStatus.success:
+                if (state.intervals.isEmpty) {
+                  return const Center(child: Text('no intervals'));
+                }
+                return ListView.builder(
+                  itemCount: state.intervals.length + 1,
+                  itemBuilder: (context, index) {
+                    return index == state.intervals.length
+                        ? IntervalTotalListItem(intervals: state.intervals)
+                        : IntervalListItem(interval: state.intervals[index]);
+                  },
+                  controller: _scrollController,
+                );
+              case IntervalsStatus.initial:
+                return const Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
+import 'package:apollo_flutter/features/countdown_timer/presentation/countdown_timer_page.dart';
 import 'package:apollo_flutter/features/days/data/repository/days_repository.dart';
 import 'package:apollo_flutter/features/days/presentation/days_page.dart';
 import 'package:apollo_flutter/features/intervals/data/repository/intervals_repository.dart';
@@ -64,6 +65,9 @@ class ApolloApp extends StatelessWidget {
               repository: daysRepository,
             ),
         IntervalsPage.id: (context) => IntervalsPage(
+              repository: intervalsRepository,
+            ),
+        CountdownTimerPage.id: (context) => CountdownTimerPage(
               repository: intervalsRepository,
             ),
       },
