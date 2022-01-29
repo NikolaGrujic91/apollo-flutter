@@ -7,6 +7,7 @@ import 'package:apollo_flutter/features/days/data/repository/days_repository'
     '.dart';
 import 'package:apollo_flutter/features/days/presentation/days_list.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
+import 'package:apollo_flutter/util/constants_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,6 +53,8 @@ class DaysPage extends StatelessWidget {
   }
 
   String _getPlanId(BuildContext context) {
-    return ModalRoute.of(context)!.settings.arguments.toString();
+    final arguments = ModalRoute.of(context)!.settings.arguments as Map?;
+
+    return arguments![kPlanId].toString();
   }
 }

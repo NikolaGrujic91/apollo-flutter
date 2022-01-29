@@ -4,6 +4,7 @@
 
 import 'package:apollo_flutter/features/days/presentation/days_page.dart';
 import 'package:apollo_flutter/features/plans/data/plan.dart';
+import 'package:apollo_flutter/util/constants_json.dart';
 import 'package:flutter/material.dart';
 
 /// Widget representing plans list item
@@ -30,7 +31,7 @@ class PlanListItem extends StatelessWidget {
           Navigator.pushReplacementNamed(
             context,
             DaysPage.id,
-            arguments: plan.id,
+            arguments: {kPlanId: plan.id},
           );
         },
       ),
