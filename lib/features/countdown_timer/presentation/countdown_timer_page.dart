@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:apollo_flutter/features/countdown_timer/business_logic/countdown_timer_bloc.dart';
+import 'package:apollo_flutter/features/countdown_timer/presentation/countdown_timer.dart';
 import 'package:apollo_flutter/features/intervals/data/repository/intervals_repository.dart';
 import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
 import 'package:apollo_flutter/util/colors.dart';
@@ -38,7 +39,7 @@ class CountdownTimerPage extends StatelessWidget {
           ..add(
             CancelTimer(),
           ),
-        child: const Text('Countdown timer'),
+        child: CountdownTimer(),
       ),
     );
   }

@@ -61,6 +61,7 @@ class IntervalsPage extends StatelessWidget {
           shape: const CircleBorder(
             side: BorderSide(
               color: kTextColor,
+              width: 0.5,
             ),
           ),
           child: const Text('Start'),
