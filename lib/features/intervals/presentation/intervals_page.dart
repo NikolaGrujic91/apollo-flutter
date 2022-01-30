@@ -55,6 +55,7 @@ class IntervalsPage extends StatelessWidget {
       width: 150,
       child: FittedBox(
         child: FloatingActionButton(
+          heroTag: 'intervalsFAB',
           backgroundColor: kBackgroundColor,
           foregroundColor: kTextColor,
           elevation: 6,

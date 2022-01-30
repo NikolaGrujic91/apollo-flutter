@@ -2,7 +2,8 @@
 // Use of this source code is governed by a GNU-style license that can be
 // found in the LICENSE file.
 
-import 'package:apollo_flutter/features/countdown_timer/business_logic/countdown_timer_bloc.dart';
+import 'package:apollo_flutter/features/countdown_timer/business_logic/timer_bloc.dart';
+import 'package:apollo_flutter/features/countdown_timer/data/ticker.dart';
 import 'package:apollo_flutter/features/countdown_timer/presentation/countdown_timer.dart';
 import 'package:apollo_flutter/features/intervals/data/repository/intervals_repository.dart';
 import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
@@ -35,10 +36,7 @@ class CountdownTimerPage extends StatelessWidget {
         foregroundColor: kTextColor,
       ),
       body: BlocProvider(
-        create: (_) => CountdownTimerBloc()
-          ..add(
-            CancelTimer(),
-          ),
+        create: (_) => TimerBloc(ticker: Ticker(), duration: 10),
         child: CountdownTimer(),
       ),
     );
