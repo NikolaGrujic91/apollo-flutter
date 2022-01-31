@@ -9,6 +9,7 @@ import 'package:apollo_flutter/features/intervals/data/repository/intervals_repo
 import 'package:apollo_flutter/features/intervals/presentation/intervals_list.dart';
 import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
+import 'package:apollo_flutter/util/navigation_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,8 +41,8 @@ class IntervalsPage extends StatelessWidget {
         create: (_) => IntervalsBloc(repository: repository)
           ..add(
             IntervalsFetched(
-              dayId: _getDayId(context),
-              planId: _getPlanId(context),
+              dayId: getDayId(context),
+              planId: getPlanId(context),
             ),
           ),
         child: const IntervalsList(),
@@ -72,8 +73,8 @@ class IntervalsPage extends StatelessWidget {
             context,
             CountdownTimerPage.id,
             arguments: {
-              kDayId: _getDayId(context),
-              kPlanId: _getPlanId(context),
+              kDayId: getDayId(context),
+              kPlanId: getPlanId(context),
             },
           );
         },
@@ -87,22 +88,10 @@ class IntervalsPage extends StatelessWidget {
         Navigator.pushReplacementNamed(
           context,
           DaysPage.id,
-          arguments: {kPlanId: _getPlanId(context)},
+          arguments: {kPlanId: getPlanId(context)},
         );
       },
       icon: const Icon(Icons.arrow_back),
     );
-  }
-
-  String _getDayId(BuildContext context) {
-    final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
-
-    return arguments![kDayId].toString();
-  }
-
-  String _getPlanId(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map?;
-
-    return arguments![kPlanId].toString();
   }
 }

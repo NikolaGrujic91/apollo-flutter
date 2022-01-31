@@ -8,7 +8,7 @@ import 'package:apollo_flutter/features/days/data/repository/days_repository'
 import 'package:apollo_flutter/features/days/presentation/days_list.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
 import 'package:apollo_flutter/util/colors.dart';
-import 'package:apollo_flutter/util/constants_json.dart';
+import 'package:apollo_flutter/util/navigation_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +37,7 @@ class DaysPage extends StatelessWidget {
       ),
       body: BlocProvider(
         create: (_) => DaysBloc(repository: repository)
-          ..add(DaysFetched(planId: _getPlanId(context))),
+          ..add(DaysFetched(planId: getPlanId(context))),
         child: const DaysList(),
       ),
     );
@@ -53,11 +53,5 @@ class DaysPage extends StatelessWidget {
       },
       icon: const Icon(Icons.arrow_back),
     );
-  }
-
-  String _getPlanId(BuildContext context) {
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map?;
-
-    return arguments![kPlanId].toString();
   }
 }
