@@ -73,8 +73,16 @@ class TimerActions extends StatelessWidget {
               _button(
                 context,
                 state,
-                'Replay',
+                'Cancel',
                 () => context.read<TimerBloc>().add(const TimerReset()),
+              ),
+              _button(
+                context,
+                state,
+                'Start',
+                () => context
+                    .read<TimerBloc>()
+                    .add(TimerStarted(duration: state.duration)),
               ),
             ],
           ],
