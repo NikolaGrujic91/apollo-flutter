@@ -19,9 +19,14 @@ class TimerText extends StatelessWidget {
         ((duration / 60) % 60).floor().toString().padLeft(2, '0');
     final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
 
+    final totalIntervals = context
+        .select((TimerBloc bloc) => bloc.repository.filteredIntervals.length);
+    final currentInterval =
+        context.select((TimerBloc bloc) => bloc.currentInterval) + 1;
+
     return Center(
       child: Text(
-        '$minutesStr:$secondsStr',
+        '$minutesStr:$secondsStr\n$currentInterval|$totalIntervals',
         style: const TextStyle(
           color: kTextColor,
           fontSize: 100,

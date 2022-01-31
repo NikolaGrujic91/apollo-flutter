@@ -9,13 +9,14 @@ import 'package:apollo_flutter/features/intervals/data/interval.dart';
 class IntervalsRepository {
   final _intervalsProvider = IntervalsProvider();
 
+  /// List of the last filtered intervals
+  List<Interval> filteredIntervals = [];
+
   /// Get intervals for [dayId] and [planId]
   Future<List<Interval>> getData(String dayId, String planId) async {
-    var filtered = <Interval>[];
-
     await _intervalsProvider.readData().then(
           (List<Interval> intervals) => {
-            filtered = intervals
+            filteredIntervals = intervals
                 .where(
                   (interval) =>
                       interval.dayId == dayId && interval.planId == planId,
@@ -24,11 +25,11 @@ class IntervalsRepository {
           },
         );
 
-    filtered.sort(
+    filteredIntervals.sort(
       (intervalA, intervalB) =>
           intervalA.orderNumber.compareTo(intervalB.orderNumber),
     );
 
-    return filtered;
+    return filteredIntervals;
   }
 }

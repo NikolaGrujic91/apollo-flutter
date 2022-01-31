@@ -7,16 +7,20 @@
 import 'dart:async';
 
 import 'package:apollo_flutter/features/countdown_timer/data/ticker.dart';
+import 'package:apollo_flutter/features/intervals/data/repository/intervals_repository.dart';
 import 'package:bloc/bloc.dart';
 
 part 'timer_event.dart';
 part 'timer_state.dart';
 
+/// Get intervals from IntervalsBloc, communication between blocs
+
 /// Timer bloc
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
   /// Creates new instance
-  TimerBloc({required this.ticker, required this.duration})
-      : super(TimerInitial(duration)) {
+  TimerBloc({required this.ticker, required this.repository})
+      : super(TimerInitial(repository.filteredIntervals[0].seconds)) {
+    currentInterval = 0;
     on<TimerStarted>(_onStarted);
     on<TimerTicked>(_onTicked);
     on<TimerPaused>(_onPaused);
@@ -24,8 +28,11 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     on<TimerReset>(_onReset);
   }
 
-  /// Timer duration in seconds
-  int duration;
+  /// Intervals repository
+  final IntervalsRepository repository;
+
+  /// Currently active interval
+  late int currentInterval;
 
   /// Ticker
   final Ticker ticker;
@@ -48,11 +55,30 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   }
 
   void _onTicked(TimerTicked event, Emitter<TimerState> emit) {
-    emit(
-      event.duration > 0
-          ? TimerRunInProgress(event.duration)
-          : const TimerRunComplete(),
-    );
+    /// if current interval is still in progress keep running
+    if (event.duration > 0) {
+      emit(TimerRunInProgress(event.duration));
+
+      return;
+    }
+
+    currentInterval++;
+    final filteredIntervals = repository.filteredIntervals;
+
+    /// if the last interval is reached run is completed
+    if (currentInterval >= filteredIntervals.length) {
+      currentInterval = 0;
+      emit(const TimerRunComplete());
+
+      return;
+    }
+
+    /// The current interval is finished, start with the next interval
+    emit(TimerRunInProgress(filteredIntervals[currentInterval].seconds));
+    _tickerSubscription?.cancel();
+    _tickerSubscription = ticker
+        .tick(ticks: filteredIntervals[currentInterval].seconds)
+        .listen((duration) => add(TimerTicked(duration: duration)));
   }
 
   void _onPaused(TimerPaused event, Emitter<TimerState> emit) {
@@ -71,6 +97,6 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   void _onReset(TimerReset event, Emitter<TimerState> emit) {
     _tickerSubscription?.cancel();
-    emit(TimerInitial(duration));
+    emit(TimerInitial(repository.filteredIntervals[currentInterval].seconds));
   }
 }

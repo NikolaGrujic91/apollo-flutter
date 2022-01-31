@@ -36,8 +36,11 @@ class CountdownTimerPage extends StatelessWidget {
         foregroundColor: kTextColor,
       ),
       body: BlocProvider(
-        create: (_) => TimerBloc(ticker: Ticker(), duration: 10),
-        child: CountdownTimer(),
+        create: (_) => TimerBloc(
+          ticker: const Ticker(),
+          repository: repository,
+        ),
+        child: const CountdownTimer(),
       ),
     );
   }
