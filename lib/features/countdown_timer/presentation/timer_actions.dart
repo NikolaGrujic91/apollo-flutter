@@ -22,70 +22,76 @@ class TimerActions extends StatelessWidget {
     return BlocBuilder<TimerBloc, TimerState>(
       buildWhen: (prev, state) => prev.runtimeType != state.runtimeType,
       builder: (context, state) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            if (state is TimerInitial) ...[
-              _button(
-                context,
-                state,
-                'Cancel',
-                () => context.read<TimerBloc>().add(const TimerReset()),
-              ),
-              _button(
-                context,
-                state,
-                'Start',
-                () => context
-                    .read<TimerBloc>()
-                    .add(TimerStarted(duration: state.duration)),
-              ),
+        return Padding(
+          padding: const EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (state is TimerInitial) ...[
+                _button(
+                  context,
+                  state,
+                  'Cancel',
+                  () => context.read<TimerBloc>().add(const TimerReset()),
+                ),
+                _button(
+                  context,
+                  state,
+                  'Start',
+                  () => context
+                      .read<TimerBloc>()
+                      .add(TimerStarted(duration: state.duration)),
+                ),
+              ],
+              if (state is TimerRunInProgress) ...[
+                _button(
+                  context,
+                  state,
+                  'Cancel',
+                  () => context.read<TimerBloc>().add(const TimerReset()),
+                ),
+                _button(
+                  context,
+                  state,
+                  'Pause',
+                  () => context.read<TimerBloc>().add(const TimerPaused()),
+                ),
+              ],
+              if (state is TimerRunPause) ...[
+                _button(
+                  context,
+                  state,
+                  'Cancel',
+                  () => context.read<TimerBloc>().add(const TimerReset()),
+                ),
+                _button(
+                  context,
+                  state,
+                  'Resume',
+                  () => context.read<TimerBloc>().add(const TimerResumed()),
+                ),
+              ],
+              if (state is TimerRunComplete) ...[
+                _button(
+                  context,
+                  state,
+                  'Cancel',
+                  () => context.read<TimerBloc>().add(const TimerReset()),
+                ),
+                _button(
+                  context,
+                  state,
+                  'Start',
+                  () => context
+                      .read<TimerBloc>()
+                      .add(TimerStarted(duration: state.duration)),
+                ),
+              ],
             ],
-            if (state is TimerRunInProgress) ...[
-              _button(
-                context,
-                state,
-                'Cancel',
-                () => context.read<TimerBloc>().add(const TimerReset()),
-              ),
-              _button(
-                context,
-                state,
-                'Pause',
-                () => context.read<TimerBloc>().add(const TimerPaused()),
-              ),
-            ],
-            if (state is TimerRunPause) ...[
-              _button(
-                context,
-                state,
-                'Cancel',
-                () => context.read<TimerBloc>().add(const TimerReset()),
-              ),
-              _button(
-                context,
-                state,
-                'Resume',
-                () => context.read<TimerBloc>().add(const TimerResumed()),
-              ),
-            ],
-            if (state is TimerRunComplete) ...[
-              _button(
-                context,
-                state,
-                'Cancel',
-                () => context.read<TimerBloc>().add(const TimerReset()),
-              ),
-              _button(
-                context,
-                state,
-                'Start',
-                () => context
-                    .read<TimerBloc>()
-                    .add(TimerStarted(duration: state.duration)),
-              ),
-            ],
-          ],
+          ),
         );
       },
     );

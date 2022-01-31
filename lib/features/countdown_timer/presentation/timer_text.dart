@@ -24,14 +24,37 @@ class TimerText extends StatelessWidget {
     final currentInterval =
         context.select((TimerBloc bloc) => bloc.currentInterval) + 1;
 
+    final type = context.select((TimerBloc bloc) =>
+        bloc.repository.filteredIntervals[currentInterval].type);
+
     return Center(
-      child: Text(
-        '$minutesStr:$secondsStr\n$currentInterval|$totalIntervals',
-        style: const TextStyle(
-          color: kTextColor,
-          fontSize: 100,
-          fontWeight: FontWeight.w200,
-        ),
+      child: Column(
+        children: [
+          Text(
+            '$currentInterval / $totalIntervals',
+            style: const TextStyle(
+              color: kTextColor,
+              fontSize: 50,
+              fontWeight: FontWeight.w100,
+            ),
+          ),
+          Text(
+            '$minutesStr:$secondsStr',
+            style: const TextStyle(
+              color: kTextColor,
+              fontSize: 100,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          Text(
+            type,
+            style: const TextStyle(
+              color: kTextColor,
+              fontSize: 50,
+              fontWeight: FontWeight.w100,
+            ),
+          ),
+        ],
       ),
     );
   }
