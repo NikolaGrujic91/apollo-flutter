@@ -50,33 +50,33 @@ class IntervalsPage extends StatelessWidget {
   }
 
   Widget _floatingActionButton(BuildContext context) {
+    const shape = CircleBorder(
+      side: BorderSide(
+        color: kTextColor,
+        width: 0.5,
+      ),
+    );
+
     return SizedBox(
       height: 150,
       width: 150,
-      child: FittedBox(
-        child: FloatingActionButton(
-          heroTag: 'intervalsFAB',
-          backgroundColor: kBackgroundColor,
-          foregroundColor: kTextColor,
-          elevation: 6,
-          shape: const CircleBorder(
-            side: BorderSide(
-              color: kTextColor,
-              width: 0.5,
-            ),
-          ),
-          child: const Text('Start'),
-          onPressed: () {
-            Navigator.pushReplacementNamed(
-              context,
-              CountdownTimerPage.id,
-              arguments: {
-                kDayId: _getDayId(context),
-                kPlanId: _getPlanId(context),
-              },
-            );
-          },
-        ),
+      child: FloatingActionButton(
+        heroTag: 'intervalsFAB',
+        backgroundColor: kBackgroundColor,
+        foregroundColor: kTextColor,
+        elevation: 6,
+        shape: shape,
+        child: const Text('Start'),
+        onPressed: () {
+          Navigator.pushReplacementNamed(
+            context,
+            CountdownTimerPage.id,
+            arguments: {
+              kDayId: _getDayId(context),
+              kPlanId: _getPlanId(context),
+            },
+          );
+        },
       ),
     );
   }
