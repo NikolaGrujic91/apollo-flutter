@@ -27,7 +27,6 @@ class DayListItem extends StatelessWidget {
       child: ListTile(
         leading: Text('${day.orderNumber}', style: textTheme.caption),
         title: Text(day.englishName),
-        dense: true,
         tileColor: kBackgroundColor,
         textColor: kTextColor,
         onTap: () {

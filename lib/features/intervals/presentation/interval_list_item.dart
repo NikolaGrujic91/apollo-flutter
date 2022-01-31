@@ -28,7 +28,6 @@ class IntervalListItem extends StatelessWidget {
         leading: Text('${interval.orderNumber}', style: textTheme.caption),
         title: Text(intervalFormatted(interval.seconds)),
         trailing: Text(interval.type),
-        dense: true,
         tileColor: kBackgroundColor,
         textColor: kTextColor,
       ),

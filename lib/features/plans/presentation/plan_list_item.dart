@@ -27,7 +27,6 @@ class PlanListItem extends StatelessWidget {
       child: ListTile(
         leading: Text('${plan.orderNumber}', style: textTheme.caption),
         title: Text(plan.englishName),
-        dense: true,
         tileColor: kBackgroundColor,
         textColor: kTextColor,
         onTap: () {
