@@ -4,6 +4,7 @@
 
 import 'package:apollo_flutter/features/countdown_timer/business_logic/timer_bloc.dart';
 import 'package:apollo_flutter/util/colors.dart';
+import 'package:apollo_flutter/util/formatters.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,14 +16,11 @@ class TimerText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final duration = context.select((TimerBloc bloc) => bloc.state.duration);
-    final minutesStr =
-        ((duration / 60) % 60).floor().toString().padLeft(2, '0');
-    final secondsStr = (duration % 60).floor().toString().padLeft(2, '0');
 
     final totalIntervals = context
         .select((TimerBloc bloc) => bloc.repository.filteredIntervals.length);
     final currentInterval =
-        context.select((TimerBloc bloc) => bloc.currentInterval) + 1;
+        context.select((TimerBloc bloc) => bloc.currentInterval);
 
     final type = context.select((TimerBloc bloc) =>
         bloc.repository.filteredIntervals[currentInterval].type);
@@ -31,7 +29,7 @@ class TimerText extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            '$currentInterval / $totalIntervals',
+            '${currentInterval + 1} / $totalIntervals',
             style: const TextStyle(
               color: kTextColor,
               fontSize: 50,
@@ -39,7 +37,7 @@ class TimerText extends StatelessWidget {
             ),
           ),
           Text(
-            '$minutesStr:$secondsStr',
+            formatDuration(duration),
             style: const TextStyle(
               color: kTextColor,
               fontSize: 100,

@@ -26,7 +26,7 @@ class IntervalListItem extends StatelessWidget {
     return Material(
       child: ListTile(
         leading: Text('${interval.orderNumber}', style: textTheme.caption),
-        title: Text(intervalFormatted(interval.seconds)),
+        title: Text(formatDuration(interval.seconds)),
         trailing: Text(interval.type),
         tileColor: kBackgroundColor,
         textColor: kTextColor,

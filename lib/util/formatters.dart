@@ -5,7 +5,7 @@
 /// Format seconds to human readable format
 /// if [seconds] >= 3600 HH:MM:SS
 /// else MM:SS
-String intervalFormatted(int seconds) {
+String formatDuration(int seconds) {
   final duration = Duration(seconds: seconds);
   String twoDigits(int n) => n.toString().padLeft(2, '0');
   final twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));

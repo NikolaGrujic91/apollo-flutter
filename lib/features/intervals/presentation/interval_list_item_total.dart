@@ -26,7 +26,7 @@ class IntervalTotalListItem extends StatelessWidget {
     return Material(
       child: ListTile(
         leading: Text('Total', style: textTheme.caption),
-        title: Text(intervalFormatted(_calculatedTotal())),
+        title: Text(formatDuration(_calculatedTotal())),
         tileColor: kBackgroundColor,
         textColor: kTextColor,
       ),
