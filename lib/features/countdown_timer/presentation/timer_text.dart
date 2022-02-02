@@ -16,6 +16,7 @@ class TimerText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final duration = context.select((TimerBloc bloc) => bloc.state.duration);
+    final fontSize = duration >= 3600 ? 85.0 : 130.0;
 
     final totalIntervals = context
         .select((TimerBloc bloc) => bloc.repository.filteredIntervals.length);
@@ -32,23 +33,23 @@ class TimerText extends StatelessWidget {
             '${currentInterval + 1} / $totalIntervals',
             style: const TextStyle(
               color: kTextColor,
-              fontSize: 50,
+              fontSize: 70,
               fontWeight: FontWeight.w100,
             ),
           ),
           Text(
             formatDuration(duration),
-            style: const TextStyle(
+            style: TextStyle(
               color: kTextColor,
-              fontSize: 100,
+              fontSize: fontSize,
               fontWeight: FontWeight.w300,
             ),
           ),
           Text(
-            type,
+            type.toUpperCase(),
             style: const TextStyle(
               color: kTextColor,
-              fontSize: 50,
+              fontSize: 70,
               fontWeight: FontWeight.w100,
             ),
           ),

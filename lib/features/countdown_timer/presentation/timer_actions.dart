@@ -119,7 +119,14 @@ class TimerActions extends StatelessWidget {
         backgroundColor: kBackgroundColor,
         foregroundColor: kTextColor,
         onPressed: onPressed,
-        child: Text(text),
+        child: Text(
+          text,
+          style: const TextStyle(
+            color: kTextColor,
+            fontSize: 25,
+            fontWeight: FontWeight.w300,
+          ),
+        ),
       ),
     );
   }
