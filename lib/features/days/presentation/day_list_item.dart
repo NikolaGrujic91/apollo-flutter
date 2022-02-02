@@ -6,6 +6,7 @@ import 'package:apollo_flutter/features/days/data/day.dart';
 import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
 import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
+import 'package:apollo_flutter/util/navigation_arguments.dart';
 import 'package:flutter/material.dart';
 
 /// Widget representing days list item
@@ -33,7 +34,12 @@ class DayListItem extends StatelessWidget {
           Navigator.pushReplacementNamed(
             context,
             IntervalsPage.id,
-            arguments: {kDayId: day.id, kPlanId: day.planId},
+            arguments: {
+              kDayId: day.id,
+              kPlanId: day.planId,
+              kDayName: day.englishName,
+              kPlanName: getPlanName(context),
+            },
           );
         },
       ),

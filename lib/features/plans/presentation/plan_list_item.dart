@@ -33,7 +33,7 @@ class PlanListItem extends StatelessWidget {
           Navigator.pushReplacementNamed(
             context,
             DaysPage.id,
-            arguments: {kPlanId: plan.id},
+            arguments: {kPlanId: plan.id, kPlanName: plan.englishName},
           );
         },
       ),

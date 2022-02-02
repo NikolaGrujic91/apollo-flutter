@@ -33,7 +33,7 @@ class IntervalsPage extends StatelessWidget {
       floatingActionButton: _floatingActionButton(context),
       appBar: AppBar(
         leading: _backButton(context),
-        title: const Text('Intervals'),
+        title: Text(getDayName(context)),
         backgroundColor: kBackgroundColor,
         foregroundColor: kTextColor,
       ),
@@ -75,6 +75,8 @@ class IntervalsPage extends StatelessWidget {
             arguments: {
               kDayId: getDayId(context),
               kPlanId: getPlanId(context),
+              kDayName: getDayName(context),
+              kPlanName: getPlanName(context),
             },
           );
         },
@@ -88,7 +90,11 @@ class IntervalsPage extends StatelessWidget {
         Navigator.pushReplacementNamed(
           context,
           DaysPage.id,
-          arguments: {kPlanId: getPlanId(context)},
+          arguments: {
+            kPlanId: getPlanId(context),
+            kDayName: getDayName(context),
+            kPlanName: getPlanName(context),
+          },
         );
       },
       icon: const Icon(Icons.arrow_back),

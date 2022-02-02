@@ -31,7 +31,7 @@ class DaysPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: _backButton(context),
-        title: const Text('Days'),
+        title: Text(getPlanName(context)),
         backgroundColor: kBackgroundColor,
         foregroundColor: kTextColor,
       ),

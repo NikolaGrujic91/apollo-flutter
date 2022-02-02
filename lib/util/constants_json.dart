@@ -37,3 +37,9 @@ const String kType = 'type';
 
 /// JSON key seconds
 const String kSeconds = 'seconds';
+
+/// Key plan name
+const String kPlanName = 'plan_name';
+
+/// Key day name
+const String kDayName = 'day_name';

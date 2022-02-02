@@ -52,7 +52,12 @@ class CountdownTimerPage extends StatelessWidget {
         Navigator.pushReplacementNamed(
           context,
           IntervalsPage.id,
-          arguments: {kDayId: getDayId(context), kPlanId: getPlanId(context)},
+          arguments: {
+            kDayId: getDayId(context),
+            kPlanId: getPlanId(context),
+            kDayName: getDayName(context),
+            kPlanName: getPlanName(context),
+          },
         );
       },
       icon: const Icon(Icons.arrow_back),

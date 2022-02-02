@@ -27,7 +27,7 @@ class PlansPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Plans'),
+        title: const Text('Apollo'),
         backgroundColor: kBackgroundColor,
         foregroundColor: kTextColor,
       ),

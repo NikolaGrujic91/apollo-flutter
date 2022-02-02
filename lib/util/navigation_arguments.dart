@@ -18,3 +18,17 @@ String getPlanId(BuildContext context) {
 
   return arguments![kPlanId].toString();
 }
+
+/// Get plan name from navigation arguments
+String getPlanName(BuildContext context) {
+  final arguments = ModalRoute.of(context)!.settings.arguments as Map?;
+
+  return arguments![kPlanName].toString();
+}
+
+/// Get day name from navigation arguments
+String getDayName(BuildContext context) {
+  final arguments = ModalRoute.of(context)!.settings.arguments as Map?;
+
+  return arguments![kDayName].toString();
+}
