@@ -4,6 +4,7 @@
 
 import 'package:apollo_flutter/features/countdown_timer/business_logic/timer_bloc.dart';
 import 'package:apollo_flutter/util/colors.dart';
+import 'package:apollo_flutter/util/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -121,11 +122,7 @@ class TimerActions extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(
-            color: kTextColor,
-            fontSize: 25,
-            fontWeight: FontWeight.w300,
-          ),
+          style: fabStyle,
         ),
       ),
     );
