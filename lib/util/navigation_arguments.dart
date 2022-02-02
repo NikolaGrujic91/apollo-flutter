@@ -5,14 +5,14 @@
 import 'package:apollo_flutter/util/constants_json.dart';
 import 'package:flutter/material.dart';
 
-/// Get dayID from arguments sent when navigating
+/// Get dayID from navigation arguments
 String getDayId(BuildContext context) {
   final arguments = ModalRoute.of(context)?.settings.arguments as Map?;
 
   return arguments![kDayId].toString();
 }
 
-/// Get planID from arguments sent when navigating
+/// Get planID from navigation arguments
 String getPlanId(BuildContext context) {
   final arguments = ModalRoute.of(context)!.settings.arguments as Map?;
 
