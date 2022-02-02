@@ -23,8 +23,10 @@ class TimerText extends StatelessWidget {
     final currentInterval =
         context.select((TimerBloc bloc) => bloc.currentInterval);
 
-    final type = context.select((TimerBloc bloc) =>
-        bloc.repository.filteredIntervals[currentInterval].type);
+    final type = context.select(
+      (TimerBloc bloc) =>
+          bloc.repository.filteredIntervals[currentInterval].type,
+    );
 
     return Center(
       child: Column(

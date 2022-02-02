@@ -11,9 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// The [TimerActions] widget is just another StatelessWidget which uses a
 /// BlocBuilder to rebuild the UI every time we get a new [TimerState].
 /// [TimerActions] uses context.read<TimerBloc>() to access the [TimerBloc]
-/// instance and returns different [FloatingActionButtons] based on the
-/// current state of the [TimerBloc]. Each of the [FloatingActionButtons] adds
-/// an event in its [onPressed] callback to notify the [TimerBloc].
+/// instance and returns different FloatingActionButtons based on the
+/// current state of the [TimerBloc]. Each of the FloatingActionButtons adds
+/// an event in its onPressed callback to notify the [TimerBloc].
 class TimerActions extends StatelessWidget {
   /// Creates new instance
   const TimerActions({Key? key}) : super(key: key);

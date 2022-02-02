@@ -13,9 +13,6 @@ abstract class TimerState {
 
   /// Timer duration in seconds
   final int duration;
-
-  @override
-  List<Object> get props => [duration];
 }
 
 /// if the state is [TimerInitial] the user will be able to start the timer.

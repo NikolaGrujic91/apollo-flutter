@@ -10,9 +10,6 @@ part of 'timer_bloc.dart';
 abstract class TimerEvent {
   /// Creates new instance
   const TimerEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
 /// [TimerStarted] informs the [TimerBloc] that the timer should be started.
@@ -51,7 +48,4 @@ class TimerTicked extends TimerEvent {
 
   /// Timer duration in seconds
   final int duration;
-
-  @override
-  List<Object> get props => [duration];
 }
