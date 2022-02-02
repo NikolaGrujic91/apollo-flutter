@@ -36,7 +36,7 @@ dependencies:
 
 
 dev_dependencies:
-  dart_code_metrics: ^4.9.1
+  dart_code_metrics: ^4.10.1
   flutter_test:
     sdk: flutter
   very_good_analysis: ^2.4.0
