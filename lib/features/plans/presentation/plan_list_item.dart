@@ -6,6 +6,7 @@ import 'package:apollo_flutter/features/days/presentation/days_page.dart';
 import 'package:apollo_flutter/features/plans/data/plan.dart';
 import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
+import 'package:apollo_flutter/util/text_style.dart';
 import 'package:flutter/material.dart';
 
 /// Widget representing plans list item
@@ -25,8 +26,14 @@ class PlanListItem extends StatelessWidget {
 
     return Material(
       child: ListTile(
-        leading: Text('${plan.orderNumber}', style: textTheme.caption),
-        title: Text(plan.englishName),
+        leading: Text(
+          '${plan.orderNumber}',
+          style: leadingStyle,
+        ),
+        title: Text(
+          plan.englishName,
+          style: titleStyle,
+        ),
         tileColor: kBackgroundColor,
         textColor: kTextColor,
         onTap: () {

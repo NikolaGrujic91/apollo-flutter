@@ -6,6 +6,7 @@
 import 'package:apollo_flutter/features/intervals/data/interval.dart' as apollo;
 import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/formatters.dart';
+import 'package:apollo_flutter/util/text_style.dart';
 import 'package:flutter/material.dart';
 
 /// Widget representing intervals total list item
@@ -25,8 +26,14 @@ class IntervalTotalListItem extends StatelessWidget {
 
     return Material(
       child: ListTile(
-        leading: Text('Total', style: textTheme.caption),
-        title: Text(formatDuration(_calculatedTotal())),
+        leading: const Text(
+          'Total',
+          style: leadingStyle,
+        ),
+        title: Text(
+          formatDuration(_calculatedTotal()),
+          style: titleStyle,
+        ),
         tileColor: kBackgroundColor,
         textColor: kTextColor,
       ),

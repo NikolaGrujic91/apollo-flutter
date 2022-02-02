@@ -6,6 +6,7 @@
 import 'package:apollo_flutter/features/intervals/data/interval.dart' as apollo;
 import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/formatters.dart';
+import 'package:apollo_flutter/util/text_style.dart';
 import 'package:flutter/material.dart';
 
 /// Widget representing days list item
@@ -25,9 +26,18 @@ class IntervalListItem extends StatelessWidget {
 
     return Material(
       child: ListTile(
-        leading: Text('${interval.orderNumber}', style: textTheme.caption),
-        title: Text(formatDuration(interval.seconds)),
-        trailing: Text(interval.type),
+        leading: Text(
+          '${interval.orderNumber}',
+          style: leadingStyle,
+        ),
+        title: Text(
+          formatDuration(interval.seconds),
+          style: titleStyle,
+        ),
+        trailing: Text(
+          interval.type,
+          style: leadingStyle,
+        ),
         tileColor: kBackgroundColor,
         textColor: kTextColor,
       ),
