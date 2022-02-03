@@ -9,18 +9,19 @@ import 'package:apollo_flutter/features/plans/data/plan.dart';
 class PlansRepository {
   final _plansProvider = PlansProvider();
 
+  /// List of the last filtered plans
+  List<Plan> filteredPlans = [];
+
   /// Get plans data
   Future<List<Plan>> getData() async {
-    var filtered = <Plan>[];
-
     await _plansProvider.readData().then(
-          (List<Plan> plans) => {filtered = plans},
+          (List<Plan> plans) => {filteredPlans = plans},
         );
 
-    filtered.sort(
+    filteredPlans.sort(
       (planA, planB) => planA.orderNumber.compareTo(planB.orderNumber),
     );
 
-    return filtered;
+    return filteredPlans;
   }
 }

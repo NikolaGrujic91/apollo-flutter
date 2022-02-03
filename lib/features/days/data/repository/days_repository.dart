@@ -9,20 +9,21 @@ import 'package:apollo_flutter/features/days/data/day.dart';
 class DaysRepository {
   final _daysProvider = DaysProvider();
 
+  /// List of the last filtered days
+  List<Day> filteredDays = [];
+
   /// Get days for [planId]
   Future<List<Day>> getData(String planId) async {
-    var filtered = <Day>[];
-
     await _daysProvider.readData().then(
           (List<Day> days) => {
-            filtered = days.where((day) => day.planId == planId).toList(),
+            filteredDays = days.where((day) => day.planId == planId).toList(),
           },
         );
 
-    filtered.sort(
+    filteredDays.sort(
       (dayA, dayB) => dayA.orderNumber.compareTo(dayB.orderNumber),
     );
 
-    return filtered;
+    return filteredDays;
   }
 }
