@@ -17,6 +17,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  wakelock: ^0.6.1+1
 
 dev_dependencies:
   dart_code_metrics: ^4.10.1

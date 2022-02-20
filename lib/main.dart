@@ -13,11 +13,18 @@ import 'package:apollo_flutter/simple_bloc_observer.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wakelock/wakelock.dart';
 
 void main() {
   final _plansRepository = PlansRepository();
   final _daysRepository = DaysRepository();
   final _intervalsRepository = IntervalsRepository();
+
+  /// Ensure the WidgetBinding is initialized before enabling Wakelock
+  WidgetsFlutterBinding.ensureInitialized();
+
+  /// Prevent the screen from turning off automatically
+  Wakelock.enable();
 
   BlocOverrides.runZoned(
     () => runApp(
