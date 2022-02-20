@@ -5,6 +5,9 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+/// Execute test by running command in terminal:
+///  flutter run -t test/widget_test.darts
+
 import 'package:apollo_flutter/features/countdown_timer/business_logic/timer_bloc.dart';
 import 'package:apollo_flutter/features/countdown_timer/data/ticker.dart';
 import 'package:apollo_flutter/features/days/business_logic/days_bloc.dart';
@@ -19,56 +22,41 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:apollo_flutter/main.dart';
 
 void main() {
-  PlansRepository? plansRepository;
-  DaysRepository? daysRepository;
-  IntervalsRepository? intervalsRepository;
+  late PlansRepository plansRepository;
+  late DaysRepository daysRepository;
+  late IntervalsRepository intervalsRepository;
 
-  Ticker ticker;
-
-  PlansBloc? plansBloc;
-  DaysBloc? daysBloc;
-  IntervalsBloc? intervalsBloc;
-  TimerBloc? timerBloc;
-
-  setUp(() async {
+  /// Registers a function to be run once before all tests
+  setUpAll(() async {
     plansRepository = PlansRepository();
     daysRepository = DaysRepository();
     intervalsRepository = IntervalsRepository();
-
-    ticker = const Ticker();
-
-    plansBloc = PlansBloc(repository: plansRepository!);
-    daysBloc = DaysBloc(repository: daysRepository!);
-    intervalsBloc = IntervalsBloc(repository: intervalsRepository!);
   });
 
-  tearDown(() {
-    plansBloc?.close();
-    daysBloc?.close();
-    intervalsBloc?.close();
-    timerBloc?.close();
-  });
+  testWidgets('Test plans list swidgets', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(
+      ApolloApp(
+        plansRepository: plansRepository,
+        daysRepository: daysRepository,
+        intervalsRepository: intervalsRepository,
+      ),
+    );
 
-  test('initial states', () {
-    expect(plansBloc!.state, const PlansState());
-    expect(daysBloc!.state, const DaysState());
-    expect(intervalsBloc!.state, const IntervalsState());
-  });
+    // Verify that plans are in the list just once
+    expect(find.text('0 to 2km'), findsOneWidget);
+    expect(find.text('0 to 5km'), findsOneWidget);
+    expect(find.text('5 to 10km'), findsOneWidget);
+    expect(find.text('Weight Loss: Level 1'), findsOneWidget);
+    expect(find.text('Weight Loss: Level 2'), findsOneWidget);
+    expect(find.text('Weight Loss: Level 3'), findsOneWidget);
 
-  // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-  //   // Build our app and trigger a frame.
-  //   await tester.pumpWidget(const ApolloApp());
-  //
-  //   // Verify that our counter starts at 0.
-  //   expect(find.text('0'), findsOneWidget);
-  //   expect(find.text('1'), findsNothing);
-  //
-  //   // Tap the '+' icon and trigger a frame.
-  //   await tester.tap(find.byIcon(Icons.add));
-  //   await tester.pump();
-  //
-  //   // Verify that our counter has incremented.
-  //   expect(find.text('0'), findsNothing);
-  //   expect(find.text('1'), findsOneWidget);
-  // });
+    // Tap the '+' icon and trigger a frame.
+    //await tester.tap(find.byIcon(Icons.add));
+    //await tester.pump();
+
+    // Verify that our counter has incremented.
+    //expect(find.text('0'), findsNothing);
+    //expect(find.text('1'), findsOneWidget);
+  });
 }
