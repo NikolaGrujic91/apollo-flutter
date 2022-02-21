@@ -9,6 +9,7 @@ import 'package:apollo_flutter/features/intervals/data/repository/intervals_repo
 import 'package:apollo_flutter/features/intervals/presentation/intervals_list.dart';
 import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
+import 'package:apollo_flutter/util/icons.dart';
 import 'package:apollo_flutter/util/navigation_arguments.dart';
 import 'package:apollo_flutter/util/text_style.dart';
 import 'package:flutter/material.dart';
@@ -101,7 +102,7 @@ class IntervalsPage extends StatelessWidget {
           },
         );
       },
-      icon: const Icon(Icons.arrow_back),
+      icon: Icon(kBackIcon),
     );
   }
 }

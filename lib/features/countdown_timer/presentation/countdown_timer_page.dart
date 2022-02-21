@@ -9,6 +9,7 @@ import 'package:apollo_flutter/features/intervals/data/repository/intervals_repo
 import 'package:apollo_flutter/features/intervals/presentation/intervals_page.dart';
 import 'package:apollo_flutter/util/colors.dart';
 import 'package:apollo_flutter/util/constants_json.dart';
+import 'package:apollo_flutter/util/icons.dart';
 import 'package:apollo_flutter/util/navigation_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,7 +61,7 @@ class CountdownTimerPage extends StatelessWidget {
           },
         );
       },
-      icon: const Icon(Icons.arrow_back),
+      icon: Icon(kBackIcon),
     );
   }
 }

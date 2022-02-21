@@ -8,6 +8,7 @@ import 'package:apollo_flutter/features/days/data/repository/days_repository'
 import 'package:apollo_flutter/features/days/presentation/days_list.dart';
 import 'package:apollo_flutter/features/plans/presentation/plans_page.dart';
 import 'package:apollo_flutter/util/colors.dart';
+import 'package:apollo_flutter/util/icons.dart';
 import 'package:apollo_flutter/util/navigation_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,7 +52,7 @@ class DaysPage extends StatelessWidget {
           PlansPage.id,
         );
       },
-      icon: const Icon(Icons.arrow_back),
+      icon: Icon(kBackIcon),
     );
   }
 }
