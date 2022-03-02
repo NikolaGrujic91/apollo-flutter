@@ -12,7 +12,7 @@ environment:
   flutter: ">=2.10.2"
 
 dependencies:
-  bloc: ^8.0.2
+  bloc: ^8.0.3
   cupertino_icons: ^1.0.4
   flutter:
     sdk: flutter
@@ -20,7 +20,7 @@ dependencies:
   wakelock: ^0.6.1+1
 
 dev_dependencies:
-  dart_code_metrics: ^4.10.1
+  dart_code_metrics: ^4.11.0
   flutter_test:
     sdk: flutter
   very_good_analysis: ^2.4.0
