@@ -35,8 +35,8 @@ class TimerText extends StatelessWidget {
             '${currentInterval + 1} / $totalIntervals',
             style: const TextStyle(
               color: kTextColor,
-              fontSize: 70,
-              fontWeight: FontWeight.w100,
+              fontSize: 75,
+              fontWeight: FontWeight.w400,
             ),
           ),
           Text(
@@ -51,8 +51,8 @@ class TimerText extends StatelessWidget {
             type.toUpperCase(),
             style: const TextStyle(
               color: kTextColor,
-              fontSize: 70,
-              fontWeight: FontWeight.w100,
+              fontSize: 75,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ],
